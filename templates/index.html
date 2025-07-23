@@ -1,0 +1,68 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posture And Focus Coach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+     <header>
+    <h1>Posture & Focus Coach</h1>
+    <div class="subtitle">Real-time posture analysis and screen time monitoring</div>
+  </header>
+
+  <div class="floating-controls">
+    <button class="floating-btn dark-btn" id="dark-mode-toggle" title="Toggle Dark Mode">🌙</button>
+    <button class="floating-btn mini-btn" id="mini-mode-toggle" title="Toggle Mini Mode">🔍</button>
+  </div>
+
+  <!-- Add mini mode content -->
+  <div class="mini-mode-content">
+    <div class="mini-stats">Posture: <span id="mini-posture">Good</span></div>
+    <div class="mini-stats">Focus: <span id="mini-focus">0:00</span></div>
+    <div class="mini-stats">Alerts: <span id="mini-alerts">0</span></div>
+  </div>
+  <div class="dashboard">
+    <div class="video-container">
+      <img src="{{ url_for('video_feed') }}" width="100%" height="100%">
+    </div>
+
+    <div class="stats-panel">
+      <div class="stat-item">
+        <div class="stat-label">Current Posture</div>
+        <div class="stat-value" id="posture-status">Analyzing...</div>
+        <div class="progress-container">
+          <div class="progress-bar" id="posture-bar"></div>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-label">Screen Focus Time</div>
+        <div class="stat-value" id="focus-time">0:00</div>
+        <div class="progress-container">
+          <div class="progress-bar" id="focus-bar"></div>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-label">Posture Alerts</div>
+        <div class="stat-value" id="posture-alerts">0</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-label">Focus Alerts</div>
+        <div class="stat-value" id="focus-alerts">0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-panel">
+    <button class="control-btn start-btn" id="start-btn">Start Monitoring</button>
+    <button class="control-btn pause-btn" id="pause-btn">Pause Monitoring</button>
+    <button class="control-btn snooze-btn btn-disabled" id="snooze-btn" disabled>Snooze Alerts (5 min)</button>
+  </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+  </html>
